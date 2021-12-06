@@ -19,4 +19,14 @@ public class JsonUtil {
         }
         return null;
     }
+
+    public static <T> T convertFromString(String jsonString, Class<T> tClass) {
+        try {
+            return OBJECT_MAPPER.readerFor(tClass).readValue(jsonString);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 }
